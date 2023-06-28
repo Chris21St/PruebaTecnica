@@ -1,0 +1,213 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="titulo">NEW PRODUCT</h2>
+          <form class="mb-3" [formGroup]="productoForm"(ngSubmit)="addProduct()">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Name"
+                formControlName="name"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('name')?.hasError('required') &&
+                productoForm.get('name')?.touched
+              "
+            >
+              <span
+                >El nombre del producto <strong>es obligatorio</strong></span
+              >
+            </div>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Description"
+                formControlName="description"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('description')?.hasError('required') &&
+                productoForm.get('description')?.touched
+              "
+            >
+              <span>La descripcion <strong>es obligatorio</strong></span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Discount"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="string"
+                class="form-control form-control-lg"
+                placeholder="SKU"
+                formControlName="sku"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('sku')?.hasError('required') &&
+                productoForm.get('sku')?.touched
+              "
+            >
+              <span>El SKU <strong>es obligatorio</strong></span>
+            </div>
+            <div class="mb-3">
+              <label>Fragil:</label>
+              <input
+                type="radio"
+                id="yes"
+                formControlName="radiog"
+                value="yes"
+              />
+              <label for="yes">Yes</label>
+              <input type="radio" id="no" formControlName="radiog" value="no" />
+              <label for="no">No</label>
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="productoForm.get('radiog')?.invalid"
+            >
+              <span><strong>SELECT ONE</strong></span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Price"
+                formControlName="price"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('price')?.hasError('required') &&
+                productoForm.get('price')?.touched
+              "
+            >
+              <span>El precio <strong>es obligatorio</strong></span>
+            </div>
+            <div class="mb-3">
+              <label>FreeShipping:</label>
+              <input
+                type="radio"
+                id="yes"
+                formControlName="radiog2"
+                value="yes"
+              />
+              <label for="yes">Yes</label>
+              <input
+                type="radio"
+                id="no"
+                formControlName="radiog2"
+                value="no"
+              />
+              <label for="no">No</label>
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="productoForm.get('radiog')?.invalid"
+            >
+              <span><strong>SELECT ONE</strong></span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Stock"
+                formControlName="stock"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('stock')?.hasError('required') &&
+                productoForm.get('stock')?.touched
+              "
+            >
+              <span>El Stock <strong>es obligatorio</strong></span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Category"
+                formControlName="category"
+              />
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('category')?.hasError('required') &&
+                productoForm.get('category')?.touched
+              "
+            >
+              <span>La Categoria <strong>es obligatoria</strong></span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="SubCategory"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Brand"
+              />
+            </div>
+            <div class="mb-3">
+              <label>Status:</label>
+              <input
+                type="radio"
+                id="available"
+                formControlName="radiog3"
+                value="yes"
+              />
+              <label for="yes">Available</label>
+              <input type="radio"  id="no" formControlName="radiog3" value="no" />
+              <label for="no">No</label>
+            </div>
+            <div
+            class="text-danger"
+            *ngIf="productoForm.get('radiog3')?.invalid"
+          >
+            <span><strong>SELECT ONE</strong></span>
+          </div>
+
+            <div class="mb-3">
+              <button
+                class="btn btn-secondary btn-lg float-start"
+                routerLink=""
+              >
+                BACK
+              </button>
+              <button
+                type="submit"
+                class="btn btn-success btn-lg float-end"
+                [disabled]="productoForm.invalid"
+              >
+                OK
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

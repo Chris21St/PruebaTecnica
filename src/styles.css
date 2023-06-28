@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+  background: #DC2424;
+  background: -webkit-linear-gradient(to right, #4A569D, #DC2424);
+  background: linear-gradient(to right, #4A569D, #DC2424);
+  background: url(assets/bg-pattern.png), #7b4397;
+  background: url(assets/bg-pattern.png), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
+  background: url(assets/bg-pattern.png), linear-gradient(to left, #7b4397, #dc2430)
+}
+nav{
+  position: sticky;
+  top:0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding:8px;
+
+}
+nav ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 5rem;
+}
+nav ul li a{
+  text-decoration: none;
+  color: black;
+  padding: 6px;
+  transition: all;
+  transition-duration: 300ms;
+  border-bottom: 1px solid rgba(255, 0, 0, 0);
+}
+nav ul li a:hover{
+  color:#DC2424 ;
+  border-bottom: 1px solid #dc2424;
+}
+input[type=radio] {
+  margin-left: 10px;
+}
+
