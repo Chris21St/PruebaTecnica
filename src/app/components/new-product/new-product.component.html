@@ -4,7 +4,11 @@
       <div class="card">
         <div class="card-body text-center">
           <h2 class="titulo">NEW PRODUCT</h2>
-          <form class="mb-3" [formGroup]="productoForm"(ngSubmit)="addProduct()">
+          <form
+            class="mb-3"
+            [formGroup]="productoForm"
+            (ngSubmit)="addProduct()"
+          >
             <div class="mb-3">
               <input
                 type="text"
@@ -180,16 +184,43 @@
                 value="yes"
               />
               <label for="yes">Available</label>
-              <input type="radio"  id="no" formControlName="radiog3" value="no" />
+              <input
+                type="radio"
+                id="no"
+                formControlName="radiog3"
+                value="no"
+              />
               <label for="no">No</label>
             </div>
             <div
-            class="text-danger"
-            *ngIf="productoForm.get('radiog3')?.invalid"
-          >
-            <span><strong>SELECT ONE</strong></span>
-          </div>
-
+              class="text-danger"
+              *ngIf="productoForm.get('radiog3')?.invalid"
+            >
+              <span><strong>SELECT ONE</strong></span>
+            </div>
+            <div formArrayName="stringArray" class="mb-3">
+              <div
+                *ngFor="let control of stringArrayControls.controls; let i = index">
+                <input
+                  [formControlName]="i"
+                  type="text"
+                  [(ngModel)]="tag"
+                  class="form-control form-control-lg custom-margin"
+                  placeholder="Tags"
+                />
+                <button class="btn btn-secondary" (click)="addTags()">+</button>
+              </div>
+              <span>Tags: </span>
+              <span *ngFor="let tag of tags">{{ tag }}-</span>
+            </div>
+            <div class="mb-3">
+              <input
+                type="file"
+                accept="image/*"
+                class="form-control form-control-lg"
+                placeholder="Brand"
+              />
+            </div>
             <div class="mb-3">
               <button
                 class="btn btn-secondary btn-lg float-start"
