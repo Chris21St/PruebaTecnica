@@ -164,7 +164,7 @@
             </div>
             <div class="mb-3">
               <input
-                type="number"
+                type="text"
                 class="form-control form-control-lg"
                 placeholder="SubCategory"
                 formControlName="subcategory"
@@ -172,7 +172,7 @@
             </div>
             <div class="mb-3">
               <input
-                type="number"
+                type="text"
                 class="form-control form-control-lg"
                 placeholder="Brand"
                 formControlName="brand"
@@ -215,7 +215,7 @@
                   class="form-control form-control-lg custom-margin"
                   placeholder="Tags"
                 />
-                <button class="btn btn-secondary" (click)="addTags()">+</button>
+                <button class="btn btn-secondary" (click)="addTags($event)">+</button>
               </div>
               <span>Tags: </span>
               <span *ngFor="let tag of tags">{{ tag }}-</span>
@@ -224,7 +224,7 @@
               <input
                 type="file"
                 accept="image/*"
-
+                (change)="onFileSelect($event)"
                 class="form-control form-control-lg"
                 formControlName="photos"
               />

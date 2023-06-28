@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
@@ -15,8 +15,8 @@ export class ProductoService {
     return this.http.get(this.urlget);
   }
 
-  saveProduct(producto:Product):Observable<any>{
-    return this.http.post(this.urlpost, producto)
+  saveProduct(formData:FormData,headers:HttpHeaders):Observable<any>{
+    return this.http.post(this.urlpost, formData,{headers})
   }
   getProduct(id:string): Observable<any>{
     return this.http.get(this.urlget+id);

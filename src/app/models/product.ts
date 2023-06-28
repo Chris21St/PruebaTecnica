@@ -9,8 +9,8 @@ export class Product {
   ship: boolean;
   stock: number;
   category: string;
-  subcategory: number;
-  brand: number;
+  subcategory: string;
+  brand: string;
   status: boolean;
   tags?: string;
   photos:Event
@@ -26,8 +26,8 @@ export class Product {
     ship: boolean,
     stock: number,
     category: string,
-    subcategory: number,
-    brand: number,
+    subcategory:string,
+    brand: string,
     status: boolean,
     tags: string,
     photos:Event

@@ -1,6 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Event, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { ProductoService } from 'src/app/services/product.service';
@@ -16,10 +17,10 @@ export class NewProductComponent implements OnInit {
   id:string|null;
 
   get stringArrayControls() {
-    return this.productoForm.get('stringArray') as FormArray;
+  return this.productoForm.get('stringArray') as FormArray;
   }
 
-  constructor(private fb: FormBuilder,private aRouter:ActivatedRoute,private productoService:ProductoService, private router:Router, private toastr:ToastrService) {
+  constructor(private fb: FormBuilder,private aRouter:ActivatedRoute,private productoService:ProductoService, private router:Router, private toastr:ToastrService, private httpClient:HttpClient) {
     this.productoForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -43,38 +44,48 @@ export class NewProductComponent implements OnInit {
     this.addStringInput();
   }
   addProduct() {
-    const PRODUCTO:Product={
-      name: this.productoForm.get("name")?.value,
-      description: this.productoForm.get("description")?.value,
-      discount: this.productoForm.get("discount")?.value,
-      SKU: this.productoForm.get("SKU")?.value,
-      fragile: this.productoForm.get("radiog")?.value,
-      price: this.productoForm.get("price")?.value,
-      ship: this.productoForm.get("radiog2")?.value,
-      stock: this.productoForm.get("stock")?.value,
-      category: this.productoForm.get("category")?.value,
-      subcategory: this.productoForm.get("subcategory")?.value,
-      brand: this.productoForm.get("brand")?.value,
-      status: this.productoForm.get("radiog3")?.value,
-      tags:"[]",
-      photos: this.productoForm.get("photos")?.value,
-      idProduct: 0
-    }
-    console.log(PRODUCTO);
-    this.productoService.saveProduct(PRODUCTO).subscribe(data=>{
-      this.toastr.success("The product was entered successfully","Registered product");
-      this.router.navigate([""])
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+
+    const formData = new FormData();
+    formData.append('file', this.getValue("profile"));
+    formData.append('name',this.getValue("name"));
+    formData.append('description',this.getValue("description"))
+    formData.append('discount',this.getValue("discount"))
+    formData.append('SKU',this.getValue("SKU"))
+    formData.append('fragile',this.getValue("radiog"))
+    formData.append('price',this.getValue("price"))
+    formData.append('freeShipping',this.getValue("radiog2"))
+    formData.append('stock',this.getValue("stock"))
+    formData.append('category',this.getValue("category"))
+    formData.append('subcategory',this.getValue("subcategory"))
+    formData.append('brand',this.getValue("brand"))
+    formData.append('status',this.getValue("radiog3"))
+    formData.append('tags',JSON.stringify(this.tags))
+
+    this.productoService.saveProduct(formData,headers).subscribe(data=>{
+    this.toastr.success("The product was entered successfully","Registered product");
+    this.router.navigate([""])
     })
   }
+
   addStringInput() {
     this.stringArrayControls.push(this.fb.control(''));
   }
-  addTags() {
+
+  addTags(event:MouseEvent) {
+    event.preventDefault()
     this.tags.push(this.tag);
     this.tag = '';
   }
+
   onFileSelect(event:any){
-    const file:File=event.target.files[0]
-    //this.uploadImage(file);
+    if(event.target.files.length>0){
+      const file=event.target.files[0]
+      this.productoForm.get('profile')?.setValue(file)
+    }
+  }
+  getValue(component:string){
+   return this.productoForm.get(component)?.value
   }
 }
