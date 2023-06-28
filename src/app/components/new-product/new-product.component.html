@@ -47,6 +47,7 @@
             </div>
             <div class="mb-3">
               <input
+                formControlName="discount"
                 type="number"
                 class="form-control form-control-lg"
                 placeholder="Discount"
@@ -166,6 +167,7 @@
                 type="number"
                 class="form-control form-control-lg"
                 placeholder="SubCategory"
+                formControlName="subcategory"
               />
             </div>
             <div class="mb-3">
@@ -173,6 +175,7 @@
                 type="number"
                 class="form-control form-control-lg"
                 placeholder="Brand"
+                formControlName="brand"
               />
             </div>
             <div class="mb-3">
@@ -200,7 +203,11 @@
             </div>
             <div formArrayName="stringArray" class="mb-3">
               <div
-                *ngFor="let control of stringArrayControls.controls; let i = index">
+                *ngFor="
+                  let control of stringArrayControls.controls;
+                  let i = index
+                "
+              >
                 <input
                   [formControlName]="i"
                   type="text"
@@ -218,7 +225,7 @@
                 type="file"
                 accept="image/*"
                 class="form-control form-control-lg"
-                placeholder="Brand"
+                formControlName="photos"
               />
             </div>
             <div class="mb-3">
