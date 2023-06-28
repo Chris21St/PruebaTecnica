@@ -1,28 +1,55 @@
+<div>
+  <nav>
+    <ul>
+      <li><a routerLink="">HOME</a></li>
+      <li><a routerLink="/new-product">NUEVO PRODUCTO</a></li>
+      <li><a routerLink="/products">PRODUCTOS</a></li>
+      <li><a routerLink="">CART</a></li>
+    </ul>
+  </nav>
+</div>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <div class="card">
         <div class="card body text-center">
           <span class="titulo">PRODUCTS</span>
-          <button class="btn btn-success float-end" routerLink="crear">New</button>
           <table class="table table-striped mt-3">
             <thead>
               <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Ubicacion</th>
-                <th scope="col">Precio</th>
-                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Discount</th>
+                <th scope="col">SKU</th>
+                <th scope="col">Fragile</th>
+                <th scope="col">Price</th>
+                <th scope="col">FreeShipping</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Category</th>
+                <th scope="col">SubCategory</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Status</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Photo</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Coca Cola</td>
-                <td>Soda</td>
-                <td>Santa Ana</td>
-                <td>3</td>
-                <td>
-                </td>
+              <tr *ngFor="let producto of listproductos">
+                <td>{{producto.name}} </td>
+                <td>{{producto.description}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.name}}</td>
               </tr>
             </tbody>
           </table>

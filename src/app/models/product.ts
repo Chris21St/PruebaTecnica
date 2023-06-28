@@ -3,16 +3,16 @@ export class Product {
   name: string;
   description: string;
   discount: number;
-  sku: string;
+  SKU: string;
   fragile: boolean;
   price: number;
   ship: boolean;
   stock: number;
-  category: number;
+  category: string;
   subcategory: number;
   brand: number;
   status: boolean;
-  tags: string;
+  tags?: string;
   photos:Event
 
   constructor(
@@ -21,11 +21,11 @@ export class Product {
     description: string,
     discount: number,
     price: number,
-    sku: string,
+    SKU: string,
     fragile: boolean,
     ship: boolean,
     stock: number,
-    category: number,
+    category: string,
     subcategory: number,
     brand: number,
     status: boolean,
@@ -37,7 +37,7 @@ export class Product {
     this.description = description;
     this.discount = discount;
     this.price = price;
-    this.sku = sku;
+    this.SKU = SKU;
     this.fragile = fragile;
     this.ship = ship;
     this.stock = stock;

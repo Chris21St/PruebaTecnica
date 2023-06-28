@@ -58,14 +58,14 @@
                 type="string"
                 class="form-control form-control-lg"
                 placeholder="SKU"
-                formControlName="sku"
+                formControlName="SKU"
               />
             </div>
             <div
               class="text-danger"
               *ngIf="
-                productoForm.get('sku')?.hasError('required') &&
-                productoForm.get('sku')?.touched
+                productoForm.get('SKU')?.hasError('required') &&
+                productoForm.get('SKU')?.touched
               "
             >
               <span>El SKU <strong>es obligatorio</strong></span>
@@ -124,7 +124,7 @@
             </div>
             <div
               class="text-danger"
-              *ngIf="productoForm.get('radiog')?.invalid"
+              *ngIf="productoForm.get('radiog2')?.invalid"
             >
               <span><strong>SELECT ONE</strong></span>
             </div>
@@ -147,7 +147,7 @@
             </div>
             <div class="mb-3">
               <input
-                type="number"
+                type="text"
                 class="form-control form-control-lg"
                 placeholder="Category"
                 formControlName="category"
@@ -209,8 +209,8 @@
                 "
               >
                 <input
-                  [formControlName]="i"
                   type="text"
+                  [formControlName]="i"
                   [(ngModel)]="tag"
                   class="form-control form-control-lg custom-margin"
                   placeholder="Tags"
@@ -224,6 +224,7 @@
               <input
                 type="file"
                 accept="image/*"
+
                 class="form-control form-control-lg"
                 formControlName="photos"
               />
