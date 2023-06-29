@@ -1,6 +1,6 @@
 # PruebaTecnica
 
-##Instrucciones
+## Instrucciones
 Para instalar las dependencias
 npm install
 
