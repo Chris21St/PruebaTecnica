@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductoService {
   urlpost='https://arka-api-vtk-dd07b54028a1.herokuapp.com/api/product/createProduct';
-  urlget='https://arka-api-vtk-dd07b54028a1.herokuapp.com/api/product/getProducts';
+  urlget='https://arka-api-vtk-dd07b54028a1.herokuapp.com/api/product/getProducts?status=true&page=1';
   constructor(private http:HttpClient) { }
 
   getProducts():Observable<any>{

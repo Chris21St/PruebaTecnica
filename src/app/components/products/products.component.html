@@ -9,50 +9,18 @@
   </nav>
 </div>
 
-<div class="container mt-5">
+<div class="container">
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-md-3 pt-4" >
       <div class="card">
-        <div class="card body text-center">
-          <span class="titulo">PRODUCTS</span>
-          <table class="table table-striped mt-3">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Discount</th>
-                <th scope="col">SKU</th>
-                <th scope="col">Fragile</th>
-                <th scope="col">Price</th>
-                <th scope="col">FreeShipping</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Category</th>
-                <th scope="col">SubCategory</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Status</th>
-                <th scope="col">Tags</th>
-                <th scope="col">Photo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let producto of listproductos">
-                <td>{{producto.name}} </td>
-                <td>{{producto.description}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-                <td>{{producto.name}}</td>
-              </tr>
-            </tbody>
-          </table>
+        <img src="" alt="foto" />
+        <div class="card-body text-center">
+          <h5 class="card-tittle">
+            TITULO
+          </h5>
+          <p>PRECIO </p>
+          <p> DESCRIPCION</p>
+          <button class="btn btn-primary" routerLink="detail/:id">Detalles</button>
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ export class NewProductComponent implements OnInit {
   tags: string[] = [];
   tag: string = '';
   id:string|null;
+  selectFile:File|null=null
 
   get stringArrayControls() {
   return this.productoForm.get('stringArray') as FormArray;
@@ -39,16 +40,21 @@ export class NewProductComponent implements OnInit {
       stringArray: this.fb.array([]),
     })
     this.id=aRouter.snapshot.paramMap.get('id');
+
   }
   ngOnInit(): void {
     this.addStringInput();
   }
+  onFileSelect(event:any){
+    this.selectFile=event.target.files[0]
+    console.log(this.selectFile)
+    }
+
   addProduct() {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
-
     const formData = new FormData();
-    formData.append('file', this.getValue("profile"));
+    formData.append('photo',this.getValue("photos"))
     formData.append('name',this.getValue("name"));
     formData.append('description',this.getValue("description"))
     formData.append('discount',this.getValue("discount"))
@@ -78,14 +84,8 @@ export class NewProductComponent implements OnInit {
     this.tags.push(this.tag);
     this.tag = '';
   }
-
-  onFileSelect(event:any){
-    if(event.target.files.length>0){
-      const file=event.target.files[0]
-      this.productoForm.get('profile')?.setValue(file)
-    }
-  }
   getValue(component:string){
-   return this.productoForm.get(component)?.value
+    return this.productoForm.get(component)?.value
   }
+
 }
