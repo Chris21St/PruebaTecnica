@@ -1,26 +1,18 @@
-<div>
-  <nav>
-    <ul>
-      <li><a routerLink="">HOME</a></li>
-      <li><a routerLink="/new-product">NUEVO PRODUCTO</a></li>
-      <li><a routerLink="/products">PRODUCTOS</a></li>
-      <li><a routerLink="">CART</a></li>
-    </ul>
-  </nav>
-</div>
-
 <div class="container">
   <div class="row">
-    <div class="col-md-3 pt-4" >
-      <div class="card">
-        <img src="" alt="foto" />
-        <div class="card-body text-center">
-          <h5 class="card-tittle">
-            TITULO
-          </h5>
-          <p>PRECIO </p>
-          <p> DESCRIPCION</p>
-          <button class="btn btn-primary" routerLink="detail/:id">Detalles</button>
+    <div class="col-md-3 pt-4" *ngFor="let product of products">
+      <div class="cardprod">
+        <img [src]="product?.photos[0] ? product?.photos[0].location : 'https://commercial.bunn.com/img/image-not-available.png'" alt="foto" />
+        <div class="card-body text-center" >
+          <div>
+            <h5 class="card-tittle">
+              {{product.name}}
+            </h5>
+            <p>{{product.price}} </p>
+            <hr>
+            <p>{{product.description}}</p>
+            <button class="btn btn-primary" [routerLink]="['detail', product._id]">Detalles</button>
+          </div>
         </div>
       </div>
     </div>

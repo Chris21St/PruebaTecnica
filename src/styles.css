@@ -10,19 +10,14 @@ body{
   background: url(assets/bg-pattern.png), linear-gradient(to left, #7b4397, #dc2430)
 }
 nav{
-  position: sticky;
-  top:0;
   background-color: white;
-  display: flex;
-  justify-content: center;
-  padding:8px;
-
+  padding:10px;
 }
 nav ul{
   display: flex;
-  align-items: center;
+  justify-content: center;
   list-style: none;
-  gap: 5rem;
+  gap: 6rem;
 }
 nav ul li a{
   text-decoration: none;
@@ -38,6 +33,18 @@ nav ul li a:hover{
 }
 input[type=radio] {
   margin-left: 10px;
+}
+img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.cardprod{
+  background-color: #fff;
+  border-radius: 10px;
+  width:250px;
+  height:470px;
+  overflow:hidden;
 }
 
 

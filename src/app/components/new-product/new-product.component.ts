@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ActivatedRoute, Event, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/models/product';
+import { Products } from 'src/app/models/product';
 import { ProductoService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-new-product',
@@ -22,6 +22,8 @@ export class NewProductComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,private aRouter:ActivatedRoute,private productoService:ProductoService, private router:Router, private toastr:ToastrService, private httpClient:HttpClient) {
+
+    //Para campos requeridos
     this.productoForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -39,6 +41,8 @@ export class NewProductComponent implements OnInit {
       stock: ['', Validators.required],
       stringArray: this.fb.array([]),
     })
+
+    //Obtenemos el id
     this.id=aRouter.snapshot.paramMap.get('id');
 
   }

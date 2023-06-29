@@ -1,42 +1,26 @@
-<div>
-  <nav>
-    <ul>
-      <li><a routerLink="">HOME</a></li>
-      <li><a routerLink="/new-product">NUEVO PRODUCTO</a></li>
-      <li><a routerLink="/products">PRODUCTOS</a></li>
-      <li><a routerLink="">CART</a></li>
-    </ul>
-  </nav>
-</div>
-
-<div class="container mt-5">
+<div class="container">
+  <div class="card text-center mt-2">
+    <h3>¡¡¡NEW PRODUCTS!!!</h3>
+  </div>
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <div class="card">
-        <div class="card body text-center">
-          <span class="titulo">ULTIMOS PRODUCTOS</span>
-          <button class="btn btn-success float-end" routerLink="crear">New</button>
-          <table class="table table-striped mt-3">
-            <thead>
-              <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Ubicacion</th>
-                <th scope="col">Precio</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Coca Cola</td>
-                <td>Soda</td>
-                <td>Santa Ana</td>
-                <td>3</td>
-                <td>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="col-md-3 pt-4" *ngFor="let product of products">
+      <div class="cardprod">
+        <img [src]="product?.photos[0] ? product?.photos[0].location : 'https://commercial.bunn.com/img/image-not-available.png'" alt="foto" />
+        <div class="card-body text-center" >
+          <div>
+            <h5 class="card-tittle">
+              {{product.name}}
+            </h5>
+          </div>
+          <div class="precio">
+            <span>{{product.price|currency:'USD'}} </span>
+            <span *ngIf="product.discount!==null" >-{{product.discount}}%</span>
+              <hr>
+              <p>{{product.description}}</p>
+              <hr>
+              <p>Tags: {{product.tags}} </p>
+              <p *ngIf="product.freeShipping==true" >FreeShipping: Yes</p>
+          </div>
         </div>
       </div>
     </div>
